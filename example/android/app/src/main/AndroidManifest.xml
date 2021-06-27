@@ -21,6 +21,24 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+      <activity
+        android:name="com.jzjyt.app.pmteacher.wxapi.WXEntryActivity"
+        android:exported="true"
+        android:label="@string/app_name"
+        android:launchMode="singleTask"
+        android:parentActivityName=".MainActivity"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity" />
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <data android:scheme="wowlemon" />
+        </intent-filter>
+      </activity>
+
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 

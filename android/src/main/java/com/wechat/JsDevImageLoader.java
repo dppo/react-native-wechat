@@ -1,0 +1,41 @@
+package com.wechat;
+
+import android.app.Application;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.StrictMode;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import java.io.IOException;
+import java.net.URL;
+
+public class JsDevImageLoader {
+  private static final String TAG = "JsDevImageLoader";
+
+  public static Drawable loadIcon(Application application, String iconDevUri) {
+    try {
+      StrictMode.ThreadPolicy threadPolicy = StrictMode.getThreadPolicy();
+      StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
+
+      Drawable drawable = tryLoadIcon(application, iconDevUri);
+
+      StrictMode.setThreadPolicy(threadPolicy);
+      return drawable;
+    } catch (Exception e) {
+      Log.e(TAG, "Unable to load icon: " + iconDevUri);
+      return new BitmapDrawable();
+    }
+  }
+
+  @NonNull
+  private static Drawable tryLoadIcon(Application application, String iconDevUri) throws IOException {
+    URL url = new URL(iconDevUri);
+    Bitmap bitmap = BitmapFactory.decodeStream(url.openStream());
+    return new BitmapDrawable(application.getResources(), bitmap);
+  }
+}

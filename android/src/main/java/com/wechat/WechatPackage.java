@@ -1,4 +1,4 @@
-package com.reactnativewechat;
+package com.wechat;
 
 import androidx.annotation.NonNull;
 

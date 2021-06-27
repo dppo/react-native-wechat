@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Button, Image } from 'react-native';
+import { StyleSheet, View, Button, Image, Platform } from 'react-native';
 import Wechat, { WXMiniProgramType, WXScene } from 'react-native-wechat';
 
 const mp3Url =
@@ -8,7 +8,10 @@ const mp3Url =
 
 export default function App() {
   React.useEffect(() => {
-    Wechat.registerApp('wx1cb034e9bd598a2b', 'https://www.wow-lemon.com/pm/');
+    Wechat.registerApp(
+      Platform.OS == 'ios' ? 'wx1cb034e9bd598a2b' : 'wxa04062f1a4fefd99',
+      'https://www.wow-lemon.com/pm/'
+    );
   }, []);
 
   return (
@@ -31,7 +34,7 @@ export default function App() {
         title="分享图片"
         onPress={() => {
           Wechat.sendImage(
-            'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180520%2F0473e00bdfd2476fbe0c228a45a1652c.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627290818&t=bfd62c8174ecd0b629d2bbd475264e8c',
+            'https://tenfei03.cfp.cn/creative/vcg/veer/1600water/veer-153091007.jpg',
             WXScene.Session
           ).then((success) => {
             console.warn('success = ', success);
@@ -48,7 +51,7 @@ export default function App() {
             mp3Url,
             mp3Url,
             mp3Url,
-            Image.resolveAssetSource(require('./assets/icon_1024.png')),
+            Image.resolveAssetSource(require('./assets/banner01.png')),
             WXScene.Session
           ).then((success) => {
             console.warn('success = ', success);
@@ -63,7 +66,7 @@ export default function App() {
             '这是描述',
             mp3Url,
             mp3Url,
-            Image.resolveAssetSource(require('./assets/icon_1024.png')),
+            Image.resolveAssetSource(require('./assets/banner01.png')),
             WXScene.Session
           );
         }}
@@ -75,7 +78,7 @@ export default function App() {
             '这是标题',
             '这是描述',
             'https://www.baidu.com',
-            Image.resolveAssetSource(require('./assets/icon_1024.png')),
+            Image.resolveAssetSource(require('./assets/banner01.png')),
             WXScene.Session
           );
         }}
@@ -89,7 +92,7 @@ export default function App() {
             'https://www.baidu.com',
             'gh_92193f646457',
             '',
-            Image.resolveAssetSource(require('./assets/icon_1024.png')),
+            Image.resolveAssetSource(require('./assets/banner01.png')),
             true,
             WXMiniProgramType.Preview,
             WXScene.Session
