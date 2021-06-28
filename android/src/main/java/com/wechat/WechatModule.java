@@ -50,6 +50,29 @@ public class WechatModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void isWXAppInstalled(Promise promise) {
+    promise.resolve(WXSingleton.getInstance().api.isWXAppInstalled());
+  }
+
+  @ReactMethod
+  public void isWXAppSupportApi(Promise promise) {
+    promise.resolve(WXSingleton.getInstance().api.getWXAppSupportAPI());
+  }
+
+  @ReactMethod
+  public void getWXAppInstallUrl(Promise promise) {
+  }
+
+  @ReactMethod
+  public void getApiVersion(Promise promise) {
+  }
+
+  @ReactMethod
+  public void openWXApp(Promise promise) {
+    promise.resolve(WXSingleton.getInstance().api.openWXApp());
+  }
+
+  @ReactMethod
   public void checkUniversalLinkReady() {
   }
 
@@ -67,7 +90,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
     req.message = msg;
     req.scene = scene;
 
-    WXSingleton.getInstance().api.sendReq(req);
+    promise.resolve(WXSingleton.getInstance().api.sendReq(req));
   }
 
   @ReactMethod
@@ -89,7 +112,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
       req.message = msg;
       req.scene = scene;
 
-      WXSingleton.getInstance().api.sendReq(req);
+      promise.resolve(WXSingleton.getInstance().api.sendReq(req));
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -114,7 +137,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
     req.message = msg;
     req.scene = scene;
 
-    WXSingleton.getInstance().api.sendReq(req);
+    promise.resolve(WXSingleton.getInstance().api.sendReq(req));
   }
 
   @ReactMethod
@@ -136,7 +159,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
     req.message = msg;
     req.scene = scene;
 
-    WXSingleton.getInstance().api.sendReq(req);
+    promise.resolve(WXSingleton.getInstance().api.sendReq(req));
   }
 
   @ReactMethod
@@ -158,7 +181,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
     req.message = msg;
     req.scene = scene;
 
-    WXSingleton.getInstance().api.sendReq(req);
+    promise.resolve(WXSingleton.getInstance().api.sendReq(req));
   }
 
   @ReactMethod
@@ -183,7 +206,7 @@ public class WechatModule extends ReactContextBaseJavaModule {
     req.message = msg;
     req.scene = scene;
 
-    WXSingleton.getInstance().api.sendReq(req);
+    promise.resolve(WXSingleton.getInstance().api.sendReq(req));
   }
 
   public static Bitmap getBitmap(Application application, ReadableMap image) {

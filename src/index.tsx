@@ -4,6 +4,11 @@ export * from './types';
 
 type WechatType = {
   registerApp(appId: string, universalLink: string): void;
+  isWXAppInstalled(): Promise<boolean>;
+  isWXAppSupportApi(): Promise<number>;
+  getWXAppInstallUrl(): Promise<string>;
+  getApiVersion(): Promise<string>;
+  openWXApp(): Promise<boolean>;
   checkUniversalLinkReady(): void;
   sendText(text: string, scene: WXScene): Promise<boolean>;
   sendImage(url: string, scene: WXScene): Promise<boolean>;

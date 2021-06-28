@@ -13,6 +13,41 @@ RCT_REMAP_METHOD(registerApp,
     [WXApi registerApp:appId universalLink:universalLink];
 }
 
+RCT_REMAP_METHOD(isWXAppInstalled,
+                 isWXAppInstalled:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    resolve([NSNumber numberWithBool:[WXApi isWXAppInstalled]]);
+}
+
+RCT_REMAP_METHOD(isWXAppSupportApi,
+                 isWXAppSupportApi:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    resolve([NSNumber numberWithBool:[WXApi isWXAppSupportApi]]);
+}
+
+RCT_REMAP_METHOD(getWXAppInstallUrl,
+                 getWXAppInstallUrl:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    resolve([WXApi getWXAppInstallUrl]);
+}
+
+RCT_REMAP_METHOD(getApiVersion,
+                 getApiVersion:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    resolve([WXApi getApiVersion]);
+}
+
+RCT_REMAP_METHOD(openWXApp,
+                 openWXApp:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+{
+    resolve([NSNumber numberWithBool:[WXApi openWXApp]]);
+}
+
 RCT_EXPORT_METHOD(checkUniversalLinkReady)
 {
     [WXApi checkUniversalLinkReady:^(WXULCheckStep step, WXCheckULStepResult* result) {
